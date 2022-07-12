@@ -25,8 +25,7 @@ class SpamMenu:
 # Two blank lines between module-level functions
 # Docstrings for all public modules, functions, classes, and methods.
 def max(comparable1, comparable2):
-    """
-    Returns the larger of two comparable objects.
+    """Returns the larger of two comparable objects.
 
     :param comparable1: First object to compare.
     :param comparable2: Second object to compare.

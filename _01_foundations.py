@@ -1,5 +1,4 @@
-"""
-Truthiness
+"""Truthiness
 
 False   # false is false
 []      # empty lists are false
@@ -26,9 +25,7 @@ def print_truthiness_of(exp):
 
 class UserDefinedClass:
     def __bool__(self) -> bool:
-        """
-        Tell Python how this class should behave in a boolean context.
-        """
+        """Tell Python how this class should behave in a boolean context."""
         return False
 
     def __repr__(self) -> str:
@@ -50,9 +47,7 @@ print_truthiness_of(UserDefinedClass())
 
 # Prefer 'if val' over 'if val is True'
 
-"""
-Testing for None
-"""
+# ---------- Testing for None ----------
 val = None
 
 # Comparing singletons, use 'is'
@@ -64,11 +59,7 @@ if val is not None:
     print("no val")
 
 
-"""
-Avoid multiple tests against a single variable
-"""
-
-
+#  ---------- Avoid multiple tests against a single variable ----------
 class Moves(Enum):
     West = 1
     North = 2
@@ -94,10 +85,8 @@ if our_move in {Moves.North, Moves.South, Moves.East, Moves.West}:
 # In a loop, performance is slower
 # Move the set creation outside of the loop
 
-"""
-Choosing a random item
-"""
 
+# ---------- Choosing a random item ----------
 letters = "abcdefghijklmnopqrstuvwxyz1234567890"
 
 # C-style
@@ -109,10 +98,7 @@ print(random.choice(letters))
 
 # Prefer declarative over procedural/imperative
 
-"""
-String formatting
-"""
-
+# ---------- String formatting ----------
 name, creation = "Guido", "Python"
 
 # Not Pythonic (breaks if the variable is not a string, no implicit conversion)
@@ -127,11 +113,8 @@ print("Hi, I'm {} and I created {}".format(name, creation))
 # Even more Pythonic (f-strings, string iterpolation)
 print(f"Hi, I'm {name} and I created {creation}")
 
-"""
-Flat is better than nested
-"""
 
-
+# ---------- Flat is better than nested ----------
 def test_conditions_nested(condition1, condition2, condition3):
     if condition1:
         if condition2:
@@ -164,13 +147,10 @@ def test_conditions_flat(condition1, condition2, condition3):
 test_conditions_nested(True, True, False)
 test_conditions_flat(True, True, False)
 
-""""
-Use exit codes if your script or program will be used by other scripts or
-programs. Allows others to make decisions based on the success or failure
-of your script/program.
-"""
 
-
+# Use exit codes if your script or program will be used by other scripts or
+# programs. Allows others to make decisions based on the success or failure
+# of your script/program.
 def main(success):
     if success:
         sys.exit(0)
