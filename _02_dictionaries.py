@@ -15,7 +15,7 @@
 
 # ---------- Merging dictionaries ----------
 from collections import defaultdict
-from enum import Enum
+from enum import Enum, unique
 import json
 import random
 
@@ -98,6 +98,7 @@ print(default_movie_data["rating"])
 # ---------- Simulate switch statement ----------
 
 
+@unique
 class TrafficLight(Enum):
     RED = 1
     YELLOW = 2
@@ -105,15 +106,14 @@ class TrafficLight(Enum):
     NO_LIGHT = 4
 
 
-light_codes = (1, 2, 3, 4)
-light_colour = TrafficLight(random.choice(light_codes))
+light_colour = random.choice(list(TrafficLight))
 
 # Traditional 'if statement'
-if light_colour == TrafficLight.RED:
+if light_colour is TrafficLight.RED:
     print("stop")
-elif light_colour == TrafficLight.GREEN:
+elif light_colour is TrafficLight.GREEN:
     print("go")
-elif light_colour == TrafficLight.YELLOW:
+elif light_colour is TrafficLight.YELLOW:
     print(
         "do not enter intersection / proceed",
         "with caution if unable to",
