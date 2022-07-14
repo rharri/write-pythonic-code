@@ -2,6 +2,7 @@
 
 
 import collections
+import itertools
 import uuid
 
 
@@ -46,12 +47,13 @@ class _Node:
         self.next: _Node | None = None
 
 
-n1 = _Node(1)
-n2 = _Node(2)
-n3 = _Node(3)
+# Make 100 nodes
+nodes = [_Node(n) for n in range(100)]
 
-n1.next = n2
-n2.next = n3
+# Use itertools to join nodes
+node_pairs = itertools.pairwise(nodes)
+for node_pair in node_pairs:
+    node_pair[0].next = node_pair[1]
 
 
 # Use 'yield from' to delegate to another generator. The second generator
@@ -70,7 +72,7 @@ def next(node: _Node | None):
 
 
 # Recursive yield version
-for node in next(n1):
+for node in next(nodes[0]):
     print(node.data, end=" -> ")
 print(end="\n")
 
@@ -83,7 +85,7 @@ def next_iter(node: _Node | None):
 
 
 # Iterative version
-for node in next_iter(n1):
+for node in next_iter(nodes[0]):
     print(node.data, end=" -> ")
 print(end="\n")
 
